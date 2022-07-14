@@ -1,15 +1,11 @@
-import { ComponentType, MemoExoticComponent, NamedExoticComponent } from 'react';
-
-type TMemo = MemoExoticComponent<ComponentType>;
-
-type TStoriesComponent = ComponentType | NamedExoticComponent | TMemo;
+import { FC } from 'react'
 
 interface IConfigParams {
-  description?: string;
-  status?: 'develop' | 'ready';
+  description?: string
+  status?: 'develop' | 'ready'
 }
 
-export default (component: TStoriesComponent, config?: IConfigParams) => ({
+export default <P>(component: FC<P>, config?: IConfigParams) => ({
   component,
   parameters: {
     docs: {
@@ -20,4 +16,4 @@ export default (component: TStoriesComponent, config?: IConfigParams) => ({
     status: config?.status || 'develop',
   },
   title: component.displayName,
-});
+})
